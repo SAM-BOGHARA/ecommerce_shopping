@@ -93,8 +93,8 @@ exports.forgotPassword = catchAsyncErrors(async(req, res, next)=>{
     await user.save({validateBeforeSave: false})
 
 
-    // const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetToken}`
-    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`
+    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`
+    // const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`
 
     const message = `Your Password Reset Token is temp :- \n\n${resetPasswordUrl} \n\nIf you have not requested this
     email the, please ignore it. \n\n\nNote: The Link will be valid only for 15 minutes`
