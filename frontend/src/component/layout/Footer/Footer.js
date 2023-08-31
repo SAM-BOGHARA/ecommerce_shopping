@@ -1,6 +1,10 @@
 import React from "react";
 import playStore from "../../../images/playStore.png"
 import appStore from "../../../images/appStore.png"
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import "./Footer.css"
 
 
@@ -9,7 +13,7 @@ const Footer = () => {
     <footer id="footer">
 
       <div className="leftFooter">
-        <h4>DOWNLOAD FROM APP</h4>
+        <h4>DOWNLOAD OUR APP</h4>
         <p>Download App for Android and IOS mobile phone</p>
         <img src={playStore} alt="PlayStore"></img>
         <img src={appStore} alt="AppStore"></img>
@@ -23,10 +27,10 @@ const Footer = () => {
 
       <div className="rightFooter">
         <h4>Follow us</h4>
-        <a href="https://instagram.com/sumit.singh_18?igshid=MzNlNGNkZWQ4Mg==">Instagram</a>
-        <a href="https://twitter.com/sumitsingh____">Twitter</a>
-        <a href="https://www.linkedin.com/in/sumitkumar-singh-b572821b9/">LinkedIn</a>
-        <a href="https://github.com/sumit1617">Github</a>
+        <a href="https://instagram.com/sumit.singh_18"><InstagramIcon fontSize="large" /></a>
+        <a href="https://twitter.com/sumitsingh____"><TwitterIcon fontSize="large" /></a>
+        <a href="https://linkedin.com/in/singh-sumitkumar"><LinkedInIcon fontSize="large" /></a>
+        <a href="https://github.com/sumit1617"><GitHubIcon fontSize="large" /></a>
       </div>
 
     </footer>

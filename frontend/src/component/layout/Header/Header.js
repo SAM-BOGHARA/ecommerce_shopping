@@ -6,6 +6,7 @@ import {MdAccountCircle} from "react-icons/md";
 import {MdSearch} from "react-icons/md";
 import {MdAddShoppingCart} from "react-icons/md";
 
+
 const options = {
   burgerColorHover: " rgba(37,141,114,1)",
   logo,

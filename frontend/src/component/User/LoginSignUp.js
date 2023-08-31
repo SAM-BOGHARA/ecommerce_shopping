@@ -9,12 +9,15 @@ import {useDispatch, useSelector} from "react-redux"
 import {clearErrors, login, register} from "../../actions/userAction"
 import {useAlert} from "react-alert"
 import {useNavigate} from 'react-router-dom'
+import {Avatar} from "@mui/material"
+// import { useLocation } from "react-router-dom";
 
 const LoginSignUp = () => {
 
     const dispatch = useDispatch()
     const alert = useAlert()
     const history = useNavigate()
+    // const location = useLocation()
     
 
     const {error, loading, isAuthenticated} = useSelector((state) => state.user)
@@ -34,8 +37,8 @@ const LoginSignUp = () => {
 
     const {name, email, password} = user
 
-    const [avatar, setAvatar] = useState("/profile.png")
-    const [avatarPreview, setAvatarPreview] = useState("/profile.png")
+    const [avatar, setAvatar] = useState("")
+    // const [avatarPreview, setAvatarPreview] = useState("/profile.png")
 
     const loginSubmit = (e) => {
         e.preventDefault()
@@ -47,10 +50,10 @@ const LoginSignUp = () => {
 
         const myForm = new FormData()
 
-        myForm.set("name", name)
-        myForm.set("email", email)
-        myForm.set("password", password)
-        myForm.append("avatar", avatar)
+        myForm.set("name", name);
+        myForm.set("email", email);
+        myForm.set("password", password);
+        myForm.set("avatar", avatar);
         dispatch(register(myForm))
     }
 
@@ -60,7 +63,7 @@ const LoginSignUp = () => {
 
             reader.onload = () => {
                 if(reader.readyState === 2){
-                    setAvatarPreview(reader.result)
+                    // setAvatarPreview(reader.result)
                     setAvatar(reader.result)
                 }
             }
@@ -70,6 +73,8 @@ const LoginSignUp = () => {
             setUser({...user, [e.target.name]: e.target.value})
         }
     }
+
+    // const redirect = location.search ? location.search.split('=')[1] : "/account"
     
     useEffect(() => {
         if(error){
@@ -77,7 +82,7 @@ const LoginSignUp = () => {
             dispatch(clearErrors())
         }
         if(isAuthenticated){
-            history('/account')
+            history("/account")
         }
     }, [dispatch, error, alert, isAuthenticated])
     
@@ -178,7 +183,7 @@ const LoginSignUp = () => {
                         />
                     </div>
                     <div id="registerImage">
-                        <img src={avatarPreview} alt="Avatar Preview"/>
+                    <Avatar src={avatar} alt="User" />
                         <input 
                             type="file"
                             name="avatar"
