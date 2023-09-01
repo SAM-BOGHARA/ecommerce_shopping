@@ -42,6 +42,7 @@ import UsersList from "./component/Admin/UsersList";
 import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import About from "./component/layout/About/About";
+import NotFound from "./component/layout/Not Found/NotFound"
 
 
 function App() {
@@ -72,6 +73,18 @@ function App() {
     <Router>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
+      <Route
+            exact
+            path="/process/payment"
+            element={
+              stripeApiKey && (
+                <Elements stripe={loadStripe(stripeApiKey)}>
+                  <Payment />
+                </Elements>
+              )
+            }
+          />
+
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/contact" element={<Contact />}></Route>
@@ -113,20 +126,6 @@ function App() {
 
         <Route element={<ProtectedRoute />}>
           <Route exact path="/shipping" element={<Shipping />} />
-        </Route>
-
-        <Route element={<ProtectedRoute />}>
-          <Route
-            exact
-            path="/process/payment"
-            element={
-              stripeApiKey && (
-                <Elements stripe={loadStripe(stripeApiKey)}>
-                  <Payment />
-                </Elements>
-              )
-            }
-          />
         </Route>
 
         <Route element={<ProtectedRoute />}>
@@ -180,6 +179,13 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route exact path="/admin/reviews" element={<ProductReviews />} />
         </Route>
+
+        <Route
+          component={
+            window.location.pathname === "/process/payment" ? null : <NotFound />
+          }
+        />
+
       </Routes>
       <Footer />
     </Router>
