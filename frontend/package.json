@@ -64,5 +64,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.137.1:4000"
+  "proxy": "https://sumit-singh-mern-backend.netlify.app"
 }
